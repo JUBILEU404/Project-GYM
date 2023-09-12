@@ -1,0 +1,16 @@
+{
+  "name": "project-virtual-store",
+  "version": "1.0.0",
+  "description": "Meu primeiro projeto contruindo uma api-rest com conexão ao banco de dados",
+  "main": "index.js",
+  "author": "Sven Gabriel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.33.0"
+  }
+}
