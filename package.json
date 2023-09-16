@@ -1,9 +1,9 @@
 {
-  "name": "project-virtual-store",
+  "name": "project-gym",
   "version": "1.0.0",
   "description": "Meu primeiro projeto contruindo uma api-rest com conexão ao banco de dados",
   "main": "index.js",
-  "author": "Sven Gabriel",
+  "author": "Sven Gabriel && Thiago Araujo",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -12,5 +12,8 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.33.0"
+  },
+  "Scripts": {
+    "Start": "node server.js"
   }
 }
