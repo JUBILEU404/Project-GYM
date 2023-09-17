@@ -18,7 +18,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.Sequelize = sequelize;
 
-db.alunos = require("./item.model")(sequelize, Sequelize);
-db.professores = require("./item.model")(sequelize, Sequelize);
+db.aluno = require("./aluno.model")(sequelize, Sequelize);
+db.professores = require("./professor.model")(sequelize, Sequelize);
 
 module.exports = db;

@@ -25,7 +25,8 @@ db.Sequelize.sync()
     console.log("Falha ao acessar banco de dados: "+ err.message)
  });
 
- require("./app/routes/item.routes")(app);
+ require("./app/routes/aluno.routes")(app);
+ require("./app/routes/professor.routes")(app);
 
 app.get("/" , (req,res) => { 
     res.json({nessage: 'Hello World!!' })
