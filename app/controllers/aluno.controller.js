@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const nome = req.query.nome; // Usando req.query para pegar o parâmetro da URL
+    const nome = req.body.nome;
     let condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
 
     Aluno.findAll({ where: condition })
