@@ -1,5 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
   const Aluno = sequelize.define("aluno", {
+    professor_id: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'professores',
+        key: 'id'
+      }
+    },
     nome: {
       type: Sequelize.STRING,
     },

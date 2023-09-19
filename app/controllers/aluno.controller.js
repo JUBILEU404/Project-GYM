@@ -10,6 +10,7 @@ exports.create = (req, res) => {
         return;
     }
     const aluno = {
+        professor_id: req.body.professor_id,
         nome: req.body.nome,
         idade: req.body.idade,
         telefone: req.body.telefone,
