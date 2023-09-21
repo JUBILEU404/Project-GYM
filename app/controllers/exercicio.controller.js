@@ -28,8 +28,8 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const nome = req.body.nome;
-    let condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
+    const tipo = req.body.tipo;
+    let condition = tipo ? { tipo: { [Op.like]: `%${tipo}%` } } : null;
 
     Exercicio.findAll({ where: condition })
         .then(data => {

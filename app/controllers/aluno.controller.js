@@ -31,7 +31,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     const nome = req.body.nome;
-    let condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
+    var condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
 
     Aluno.findAll({ where: condition })
         .then(data => {
@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Ocorreu um erro ao listar os alunos."
+                message: err.message || "Ocorreu um erro ao listar os Alunos."
             });
         });
 };
