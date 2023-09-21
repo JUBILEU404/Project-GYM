@@ -18,7 +18,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.Sequelize = sequelize;
 
-db.aluno = require("./aluno.model")(sequelize, Sequelize);
+db.alunos = require("./aluno.model")(sequelize, Sequelize);
 db.professores = require("./professor.model")(sequelize, Sequelize);
 db.exercicio = require("./exercisios.model")(sequelize, Sequelize);
 db.treino = require("./treino.model")(sequelize, Sequelize);
