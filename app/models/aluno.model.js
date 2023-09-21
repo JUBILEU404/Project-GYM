@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Aluno = sequelize.define("aluno", {
-    professor_id: {
+    treino_id: {
       type: Sequelize.INTEGER,
       references: {
-        model: 'professores',
+        model: 'treinos',
         key: 'id'
       }
     },

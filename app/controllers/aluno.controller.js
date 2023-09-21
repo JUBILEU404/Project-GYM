@@ -1,5 +1,5 @@
 const db = require("../models");
-const Aluno = db.aluno;
+const Aluno = db.alunos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
         return;
     }
     const aluno = {
-        professor_id: req.body.professor_id,
+        treino_id: req.body.treino_id,
         nome: req.body.nome,
         idade: req.body.idade,
         telefone: req.body.telefone,

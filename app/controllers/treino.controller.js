@@ -1,118 +1,114 @@
 const db = require("../models");
-const Professor = db.professores;
+const Treino = db.treino;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if (!req.body.nome) {
+    if (!req.body.exercicio_id) {
         res.status(400).send({
             message: "O conteúdo não pode estar vazio!"
         });
         return;
     }
-
-    const professor = {
-        treino_id: req.body.treino_id,
-        nome: req.body.nome,
-        idade: req.body.idade,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        salario: req.body.salario,
-        is_flammable: req.body.is_flammable ? req.body.is_flammable : false
+    const treino = {
+        exercicio_id: req.body.exercicio_id,
+        professor_id: req.body.tipo,
+        aluno_id: req.body.aluno_id,
+        executou: req.body.executou ? req.body.executou : false
     };
 
-    Professor.create(professor)
+    Treino.create(treino)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Ocorreu um erro ao criar o professor."
+                message: err.message || "Ocorreu um erro ao criar o treino."
             });
         });
 };
 
 exports.findAll = (req, res) => {
     const nome = req.body.nome;
-    var condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
+    let condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
 
-    Professor.findAll({ where: condition })
+    Treino.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Ocorreu um erro ao listar os professores."
+                message: err.message || "Ocorreu um erro ao listar os treinos."
             });
         });
 };
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Professor.findByPk(id)
+    Treino.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Não foi possível encontrar um professor com o id=${id}.`
+                    message: `Não foi possível encontrar um treino com o id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocorreu um erro ao tentar encontrar um professor com o id=" + id
+                message: "Ocorreu um erro ao tentar encontrar um treino com o id=" + id
             });
         });
 };
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    Professor.update(req.body, {
+    Treino.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "O professor foi atualizado com sucesso."
+                    message: "O treino foi atualizado com sucesso."
                 });
             } else {
                 res.send({
-                    message: `Não foi possível atualizar o professor com o id=${id}.`
+                    message: `Não foi possível atualizar o treino com o id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocorreu um erro ao tentar atualizar o professor com o id=" + id
+                message: "Ocorreu um erro ao tentar atualizar o treino com o id=" + id
             });
         });
 };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
-    Professor.destroy({
+    Treino.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "O professor foi apagado com sucesso!"
+                    message: "O treino foi apagado com sucesso!"
                 });
             } else {
                 res.send({
-                    message: `Não foi possível apagar o professor com o id ${id}.`
+                    message: `Não foi possível apagar o treino com o id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ocorreu um erro ao tentar apagar o professor com o id = " + id
+                message: "Ocorreu um erro ao tentar apagar o treino com o id = " + id
             });
         });
 };
 
 exports.deleteAll = (req, res) => {
-    Professor.destroy({
+    Treino.destroy({
         where: {},
         truncate: false
     })
@@ -121,21 +117,20 @@ exports.deleteAll = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Algum erro ocorreu ao tentar apagar todos os professores solicitados."
+                message:
+                    err.message || "Algum erro ocorreu ao tentar apagar todos os treinos solicitados."
             });
         });
 };
 
 exports.findAllFlammables = (req, res) => {
-    Professor.findAll({
-        where: { is_flammable: true }
-    })
+    Treino.findAll({ where: { executou: true } })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: `Ocorreu um erro ao tentar encontrar todos os professores inflamáveis: ${err.message}`
+                message: err.message || "Algum erro ocorreu ao tentar buscar os treinos inflamáveis."
             });
         });
 };

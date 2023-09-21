@@ -27,6 +27,8 @@ db.Sequelize.sync()
 
  require("./app/routes/aluno.routes")(app);
  require("./app/routes/professor.routes")(app);
+ require("./app/routes/exercicio.routes")(app);
+ require("./app/routes/treino.routes")(app);
 
 app.get("/" , (req,res) => { 
     res.json({nessage: 'Hello World!!' })

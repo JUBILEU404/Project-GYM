@@ -1,6 +1,13 @@
 module.exports = (sequelize, Sequelize) =>{
     const Professores = sequelize.define("professores", {
-        nome: {
+      treino_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'treinos',
+          key: 'id'
+        }
+      },
+      nome: {
           type: Sequelize.STRING,
         },
         idade: {
