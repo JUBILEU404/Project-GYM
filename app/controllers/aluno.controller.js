@@ -15,7 +15,7 @@ exports.create = (req, res) => {
         idade: req.body.idade,
         telefone: req.body.telefone,
         cpf: req.body.cpf,
-        is_flammable: req.body.is_flammable ? req.body.is_flammable : false
+        praticou: req.body.praticou ? req.body.praticou : false
     };
 
     Aluno.create(aluno)
@@ -126,7 +126,7 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.findAllFlammables = (req, res) => {
-    Aluno.findAll({ where: { is_flammable: true } })
+    Aluno.findAll({ where: {  praticou: true } })
         .then(data => {
             res.send(data);
         })

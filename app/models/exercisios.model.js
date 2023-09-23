@@ -10,11 +10,11 @@ module.exports = (sequelize, Sequelize) => {
       tipo: {
         type: Sequelize.STRING,
       },
-      repeticoes: {
+      series: {
         type: Sequelize.INTEGER,
       },
-      praticou: {
-        type: Sequelize.BOOLEAN,
+      repeticoes: {
+        type: Sequelize.INTEGER,
       }
     });
   

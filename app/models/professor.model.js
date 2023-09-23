@@ -22,7 +22,7 @@ module.exports = (sequelize, Sequelize) =>{
         salario: {
           type: Sequelize.FLOAT,
         },
-        is_flammable: {
+        ja_deu_aula: {
           type: Sequelize.BOOLEAN,
         }
       });

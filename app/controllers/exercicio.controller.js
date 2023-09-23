@@ -12,8 +12,9 @@ exports.create = (req, res) => {
     const exercicio = {
         treino_id: req.body.treino_id,
         tipo: req.body.tipo,
-        repeticoes: req.body.repeticoes,
-        praticou: req.body.praticou ? req.body.praticou : false
+        series: req.body.series,
+        repeticoes: req.body.repeticoes
+        
     };
 
     Exercicio.create(exercicio)
@@ -123,14 +124,3 @@ exports.deleteAll = (req, res) => {
         });
 };
 
-exports.findAllFlammables = (req, res) => {
-    Exercicio.findAll({ where: { praticou: true } })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Algum erro ocorreu ao tentar buscar os exercicios inflamáveis."
-            });
-        });
-};

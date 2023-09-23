@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         telefone: req.body.telefone,
         cpf: req.body.cpf,
         salario: req.body.salario,
-        is_flammable: req.body.is_flammable ? req.body.is_flammable : false
+        ja_deu_aula: req.body.ja_deu_aula ? req.body.ja_deu_aula : false
     };
 
     Professor.create(professor)
@@ -128,7 +128,7 @@ exports.deleteAll = (req, res) => {
 
 exports.findAllFlammables = (req, res) => {
     Professor.findAll({
-        where: { is_flammable: true }
+        where: { ja_deu_aula: true }
     })
         .then(data => {
             res.send(data);

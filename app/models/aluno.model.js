@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
     cpf: {
       type: Sequelize.STRING,
     },
-    is_flammable: {
+    praticou: {
       type: Sequelize.BOOLEAN,
     }
   });
