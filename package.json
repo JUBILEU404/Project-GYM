@@ -1,7 +1,7 @@
 {
   "name": "project-gym",
   "version": "1.0.0",
-  "description": "Meu primeiro projeto contruindo uma api-rest com conexão ao banco de dados",
+  "description": "Nosso primeiro projeto contruindo uma api-rest com conexão ao banco de dados",
   "main": "index.js",
   "author": "Sven Gabriel && Thiago Araujo",
   "license": "ISC",
