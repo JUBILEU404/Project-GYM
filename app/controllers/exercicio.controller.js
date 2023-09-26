@@ -13,8 +13,8 @@ exports.create = (req, res) => {
         treino_id: req.body.treino_id,
         tipo: req.body.tipo,
         series: req.body.series,
-        repeticoes: req.body.repeticoes
-        
+        repeticoes: req.body.repeticoes,
+        ja_trein: req.body.ja_trein ? req.body.ja_trein: false
     };
 
     Exercicio.create(exercicio)
@@ -120,6 +120,17 @@ exports.deleteAll = (req, res) => {
             res.status(500).send({
                 message:
                     err.message || "Algum erro ocorreu ao tentar apagar todos os exercicios solicitados."
+            });
+        });
+};
+exports.findAllFlammables = (req, res) => {
+    Exercicio.findAll({ where: {  ja_treino: true } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Algum erro ocorreu ao tentar buscar os execicios inflamáveis."
             });
         });
 };

@@ -4,7 +4,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         references: {
           model: 'treinos',
-          key: 'id'
+          key: 'id',
+          autoincremento: true,
+           ForeignKey :true
         }
       },
       tipo: {
@@ -15,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       repeticoes: {
         type: Sequelize.INTEGER,
+      },
+      ja_treino: {
+        type: Sequelize.BOOLEAN,
       }
     });
   

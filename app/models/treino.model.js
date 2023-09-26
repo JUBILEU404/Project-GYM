@@ -4,21 +4,28 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         references: {
           model: 'exercicios',
-          key: 'id'
+          key: 'id',
+          autoincremento: true,
+        ForeignKey :true
+
         }
       },
       professor_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'professores',
-          key: 'id'
+          key: 'id',
+          autoincremento: true,
+        ForeignKey :true
         }
       },
       aluno_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'alunos',
-          key: 'id'
+          key: 'id',
+          autoincremento: true,
+        ForeignKey :true
         }
       },
       executou: {
