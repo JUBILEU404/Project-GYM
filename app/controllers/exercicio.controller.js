@@ -30,7 +30,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     const tipo = req.body.tipo;
-    let condition = tipo ? { tipo: { [Op.like]: `%${tipo}%` } } : null;
+    var condition = tipo ? { tipo: { [Op.like]: `%${tipo}%` } } : null;
 
     Exercicio.findAll({ where: condition })
         .then(data => {
@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Ocorreu um erro ao listar os exercicios."
+                message: err.message || "Ocorreu um erro ao listar os exercicios." // nao ta querendo aparece
             });
         });
 };
