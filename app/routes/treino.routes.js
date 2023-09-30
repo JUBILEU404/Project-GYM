@@ -9,6 +9,8 @@ module.exports = app => {
 
     router.get("/Flammabless", Treino.findAllFlammables);
 
+    router.get("/name", Treino.findbyName);
+
     router.get("/:id", Treino.findOne);
 
     router.put("/:id", Treino.update);

@@ -1,5 +1,5 @@
 const db = require("../models");
-const Treino = db.treino;
+const Treino = db.treinos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -13,6 +13,7 @@ exports.create = (req, res) => {
         exercicio_id: req.body.exercicio_id,
         professor_id: req.body.tipo,
         aluno_id: req.body.aluno_id,
+        name: req.body.name,
         executou: req.body.executou ? req.body.executou : false
     };
 
@@ -134,3 +135,14 @@ exports.findAllFlammables = (req, res) => {
             });
         });
 };
+exports.findbyName = (req, res) => {
+    const name = req.body.play1;
+       Treino.findAll({ where: { name: { [Op.like]: `%${name}%` } } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu um erro ao listar os treinos."
+            });
+        })};
