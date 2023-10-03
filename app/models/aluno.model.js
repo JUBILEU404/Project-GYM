@@ -4,10 +4,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       references: {
         model: 'treinos',
-        key: 'id',
-        autoincremento: true,
-        ForeignKey :true
-
+        key: 'id'
       }
     },
     nome: {

@@ -3,7 +3,7 @@ const Treino = db.treinos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if (!req.body.executou) {
+    if (!req.body.nome) {
         res.status(400).send({
             message: "O conteúdo não pode estar vazio!"
         });
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
         exercicio_id: req.body.exercicio_id,
         professor_id: req.body.tipo,
         aluno_id: req.body.aluno_id,
-        name: req.body.name,
+        nome: req.body.nome,
         executou: req.body.executou ? req.body.executou : false
     };
 
@@ -29,8 +29,8 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const exercicio_id = req.body.exercicio_id;
-    let condition = exercicio_id ? { exercicio_id: { [Op.like]: `%${exercicio_id}%` } } : null;
+    const nome = req.body.nome;
+    var condition = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
 
     Treino.findAll({ where: condition })
         .then(data => {
